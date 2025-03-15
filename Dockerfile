@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm ci
+RUN pnpm ci
 
 CMD ["npm", "run", "build-and-run"]

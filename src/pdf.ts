@@ -6,6 +6,6 @@ export async function htmlToPdf(html: string, pdfPath: string) {
     });
     const page = await browser.newPage();
     await page.setContent(html);
-    await page.pdf({ path: pdfPath, format: 'A4' });
+    await page.pdf({ path: pdfPath, format: 'A4', margin: { top: '10mm', right: '10mm', bottom: '10mm', left: '10mm' } });
     await browser.close();
 }

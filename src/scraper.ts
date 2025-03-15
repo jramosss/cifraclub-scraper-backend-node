@@ -6,6 +6,7 @@ export default class Scraper {
 	private socket: WebSocket | null;
 	public total_songs: number;
 	private progress: number;
+	private lastUpdate = 0;
 
 	constructor(_id: string) {
 		this.id = _id;
@@ -40,7 +41,9 @@ export default class Scraper {
 		);
 	};
 
-	private lastUpdate = 0;
+	private removeImgs = ($: cheerio.CheerioAPI) => {
+		$("img").remove();
+	}
 
 	private sendProgress = () => {
 		const now = Date.now();
@@ -57,6 +60,7 @@ export default class Scraper {
 
 	private scrapePage = async (url: string) => {
 		const $ = await this.getCheerioObject(url);
+		this.removeImgs($);
 		const pages = $('div[class="pages"]').get();
 		if (pages.length === 0) {
 			return "";
