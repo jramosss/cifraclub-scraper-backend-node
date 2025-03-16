@@ -11,6 +11,9 @@ export async function scrapeAndGenerate(connectionId: string, listUrl: string) {
 	const dbRef = ref(storage, `${connectionId}.pdf`);
 	const result = await uploadBytes(dbRef, blob, {
 		contentType: "application/pdf",
+		customMetadata: {
+			createdAt: new Date().toISOString(),
+		}
 	})
 
 	const url = await getDownloadURL(result.ref);

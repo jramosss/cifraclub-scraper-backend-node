@@ -179,3 +179,4 @@ static
 *.pdf
 dist
 apphosting.local.yaml
+service-account.json
