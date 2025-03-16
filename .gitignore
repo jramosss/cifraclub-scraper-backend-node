@@ -178,3 +178,5 @@ static
 *.html
 *.pdf
 dist
+apphosting.local.yaml
+service-account.json

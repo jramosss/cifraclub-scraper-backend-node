@@ -19,10 +19,10 @@ export function MainRouter() {
 		}
 
 		const { list_url } = req.body;
-		
-		const { pdfFileName } = await scrapeAndGenerate(connectionId, list_url);
-	
-		res.json({ url: pdfFileName });
+
+		const { url } = await scrapeAndGenerate(connectionId, list_url);
+
+		res.json({ url });
 	});
 
 	return router

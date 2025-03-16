@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { MainRouter } from './src/routes';
-
-const STATIC_PATH = './static';
+// Do not remove this import
+import { firebase } from './src/firebase';
 
 const app = express();
 
@@ -10,7 +10,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", MainRouter())
-app.use(express.static(STATIC_PATH));
 
 app.listen(8000);
 
